@@ -1,0 +1,62 @@
+﻿<Window x:Class="TasksManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TasksManager" xmlns:model="clr-namespace:TasksManager.ModelView" d:DataContext="{d:DesignInstance Type=model:ProjectViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="0,0,0,-121" Height="530" VerticalAlignment="Bottom">
+
+        <Button x:Name="AddProjectBtn" Content="Add a Project" HorizontalAlignment="Left" Margin="655,25,0,0" VerticalAlignment="Top" Width="116" Click="AddProjectBtn_Click" Height="45"/>
+        <TextBox x:Name="ProjectTxt" HorizontalAlignment="Left" Height="45" Margin="113,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269"/>
+        <Button x:Name="AddTaskBtn" Content="Add a Task" HorizontalAlignment="Left" Margin="655,97,0,0" VerticalAlignment="Top" Width="116" Click="AddTaskBtn_Click" Height="45"/>
+        <TextBox x:Name="TaskTxt" HorizontalAlignment="Left" Height="48" Margin="113,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269"/>
+        <ListBox x:Name="ProjectsLst" HorizontalAlignment="Left" Height="94" Margin="395,48,0,0" VerticalAlignment="Top" Width="241" ItemsSource="{Binding Projects}" DisplayMemberPath="ProjectName" SelectedValuePath="ProjectId"/>
+        <!--<DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="193" Margin="28,200,0,0" VerticalAlignment="Top" Width="743" ItemsSource="{Binding Tasks}" />-->
+        <ListView Name="TasksGrid" Margin="10,297,21,135"  ItemsSource="{Binding Tasks}" SelectionChanged="TasksGrid_SelectionChanged"  >
+            <ListView.View>
+                <GridView x:Name="grdTest" AllowsColumnReorder="False">
+                    <!--<GridViewColumn Header="Task Id" DisplayMemberBinding="{Binding TaskId}"  Width="250"/>-->
+                    <GridViewColumn Header="Task Name" DisplayMemberBinding="{Binding TaskName}"  Width="250" />
+                    <GridViewColumn Header="Task Status" DisplayMemberBinding="{Binding TaskStatus}" Width="100" />
+                    <GridViewColumn Header="Task Percentage in %" DisplayMemberBinding="{Binding TaskPercentage}" Width="120" />
+                    <!--<GridViewColumn Header="Project Name%" DisplayMemberBinding="{Binding ProjectId}" Width="120" />-->
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="ProjectLbl" Content="Project :" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="TaskLbl" Content="Task : " HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox IsEnabled="False" x:Name="TaskIdTxt" HorizontalAlignment="Left" Height="26" Margin="28,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="367" Text="{Binding ElementName=TasksGrid,Path=SelectedItem.TaskId}" Visibility="Hidden" />
+        <TextBox IsEnabled="False" x:Name="ProjectIdTxt" HorizontalAlignment="Left" Height="26" Margin="28,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="367" Text="{Binding ElementName=TasksGrid,Path=SelectedItem.ProjectId}" Visibility="Hidden" />
+        <TextBox IsEnabled="False" x:Name="ProjectNameTxt" HorizontalAlignment="Left" Height="26" Margin="113,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269"/>
+        <TextBox IsEnabled="False" x:Name="ProjectprogressTxt" HorizontalAlignment="Left" Height="26" Margin="113,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269" />
+
+        <TextBox x:Name="TaskNameTxt" HorizontalAlignment="Left" Height="26" Margin="114,244,0,0" TextWrapping="Wrap" Text="{Binding ElementName=TasksGrid,Path=SelectedItem.TaskName}" VerticalAlignment="Top" Width="268"  />
+        <!--<TextBox x:Name="TaskStatusTxt" HorizontalAlignment="Left" Height="23" Margin="28,216,0,0" TextWrapping="Wrap" Text="{Binding ElementName=TasksGrid,Path=SelectedItem.TaskStatus}" VerticalAlignment="Top" Width="176" RenderTransformOrigin="0.517,-0.217"/>-->
+        <Button Content="Update" Height="65" HorizontalAlignment="Left" Margin="655,203,0,0" Name="btnUpdate"   
+                VerticalAlignment="Top" Width="116"  
+                Command="{Binding Path=UpdateCommand}" Click="btnUpdate_Click"  />
+        <ListBox x:Name="TaskStatusLst" HorizontalAlignment="Left" Height="77" Margin="459,196,0,0" VerticalAlignment="Top" Width="100" SelectedIndex="{Binding ElementName=TasksGrid,Path=SelectedItem.TaskStatusValue}">
+            <ListBoxItem Content="New" ContentStringFormat=""/>
+            <ListBoxItem Content="InProgress"/>
+            <ListBoxItem Content="Finished"/>
+        </ListBox>
+        <Label x:Name="CurrentProjectsLbl" Content="Current Projects" HorizontalAlignment="Left" Margin="464,18,0,0" VerticalAlignment="Top" Width="109" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.08"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label x:Name="ProjectNameLbl" Content="Project Name :" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="ProjectProgressLbl" Content="Project Progress :" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.433,0.923"/>
+        <Label x:Name="TaskNameLbl" Content="Task Name :" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="TaskStatusLbl" Content="Task Status " HorizontalAlignment="Left" Margin="477,165,0,0" VerticalAlignment="Top" Width="68"/>
+        <!--<ComboBox x:Name="comboBox" ItemsSource="{Binding Status}"  HorizontalAlignment="Left" Margin="48,231,0,0" VerticalAlignment="Top" Width="120" Text="{Binding ElementName=TasksGrid,Path=SelectedItem.TaskStatus} "/>-->
+    </Grid>
+</Window>

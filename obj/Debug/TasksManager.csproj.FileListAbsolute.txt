@@ -1,0 +1,15 @@
+C:\Users\User\source\repos\TasksManager\bin\Debug\TasksManager.exe.config
+C:\Users\User\source\repos\TasksManager\bin\Debug\TasksManager.exe
+C:\Users\User\source\repos\TasksManager\bin\Debug\TasksManager.pdb
+C:\Users\User\source\repos\TasksManager\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\TasksManager\obj\Debug\App.g.cs
+C:\Users\User\source\repos\TasksManager\obj\Debug\TasksManager_MarkupCompile.cache
+C:\Users\User\source\repos\TasksManager\obj\Debug\TasksManager_MarkupCompile.lref
+C:\Users\User\source\repos\TasksManager\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\TasksManager\obj\Debug\TasksManager.g.resources
+C:\Users\User\source\repos\TasksManager\obj\Debug\TasksManager.Properties.Resources.resources
+C:\Users\User\source\repos\TasksManager\obj\Debug\TasksManager.csproj.GenerateResource.cache
+C:\Users\User\source\repos\TasksManager\obj\Debug\TasksManager.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\TasksManager\obj\Debug\TasksManager.exe
+C:\Users\User\source\repos\TasksManager\obj\Debug\TasksManager.pdb
+C:\Users\User\source\repos\TasksManager\obj\Debug\TasksManager.csproj.AssemblyReference.cache
